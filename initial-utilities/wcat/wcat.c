@@ -11,6 +11,7 @@ int main(int argc, char *argv[])
             if (to_open == NULL)
             {
                 printf("%s\n", "wcat: cannot open file");
+                exit(1);
             }
             else
             {
