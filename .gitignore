@@ -1,2 +1,4 @@
 *.out
 *.txt
+initial-utilities/wcat/wcat
+initial-utilities/wcat/tests-out/
