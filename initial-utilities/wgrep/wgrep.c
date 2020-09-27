@@ -18,12 +18,23 @@ int main(int argc, char *argv[])
                 }
                 else
                 {
+                    int t_lines = 0;
+                    int c_in_line = 0;
                     char ch = getc(to_open);
-                    while ((ch != EOF || ch == '\n'))
+                    while (ch != EOF)
                     {
-                        printf("%c", ch);
+                        if (ch == '\n')
+                        {
+                            t_lines++;
+                        }
+                        else
+                        {
+                            c_in_line++;
+                        }
                         ch = getc(to_open);
                     }
+
+                    printf("\n Total Char:%d Total lines:%d\n", c_in_line, t_lines);
 
                     fclose(to_open);
                 }
