@@ -9,6 +9,7 @@ int main(int argc, char *argv[])
         {
             for (int i = 2; i < argc; i++)
             {
+                char str[100];
                 FILE *to_open = fopen(argv[i], "r");
                 if (to_open == NULL) //file cannot open
                 {
@@ -17,6 +18,10 @@ int main(int argc, char *argv[])
                 }
                 else
                 {
+                    while (fgets(str, 100, to_open) != NULL)
+                    {
+                        printf("%s", str);
+                    }
                 }
                 fclose(to_open);
             }
