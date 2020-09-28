@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-#define MAX_LIMIT 100
+#define MAX_LIMIT 200
 int Search(char *str1, char *str2);
 int main(int argc, char *argv[])
 {
