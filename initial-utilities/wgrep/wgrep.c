@@ -3,9 +3,9 @@
 
 int main(int argc, char *argv[])
 {
-    if (argc > 1) // string is specified
+    if (argc >= 1) // string is specified
     {
-        if (argc > 2) // file is specified
+        if (argc >= 2) // file is specified
         {
             for (int i = 2; i < argc; i++)
             {
@@ -26,8 +26,22 @@ int main(int argc, char *argv[])
                 fclose(to_open);
             }
         }
-    }
+        else
+        {
+            /*  
+                No file is specified
+                standerd input method
+            */
+        }
+        }
     else
     {
+        /* 
+            zero command line arguments
+
+         */
+        printf("%s", "wgrep: searchterm [file ...]");
+        exit(1);
     }
+    exit(0);
 }
