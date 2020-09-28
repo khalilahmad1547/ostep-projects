@@ -2,58 +2,67 @@
 #include <stdlib.h>
 #include <string.h>
 
+#define MAX_LIMIT 100
 int Search(char *str1, char *str2);
 int main(int argc, char *argv[])
 {
-    if (argc >= 1) // string is specified
+    if (argc == 1) // nothing specified
     {
-        if (argc >= 2) // file is specified
+        printf("%s", "wgrep: searchterm [file ...]");
+        exit(1);
+    }
+    else if (argc == 2) // only string is specified
+    {
+        /*
+            No file is specified
+            standerd input method
+        */
+        char str[MAX_LIMIT];
+        fgets(str, MAX_LIMIT, stdin);
+        if (Search(argv[1], str) == 1)
         {
-            for (int i = 2; i < argc; i++)
-            {
-                char str[100];
-                FILE *to_open = fopen(argv[i], "r");
-                if (to_open == NULL) //file cannot open
-                {
-                    printf("%s\n", "wgrep: cannot open file");
-                    exit(1);
-                }
-                else
-                {
-                    while (fgets(str, 100, to_open) != NULL)
-                    {
-                        if (strncmp(argv[1], str, strlen(argv[1])) == 0)
-                        {
-                            printf("%s", str);
-                        }
-                        else
-                        {
-                            if (Search(argv[1], str) == 1)
-                            {
-                                printf("%s", str);
-                            }
-                        }
-                    }
-                }
-                fclose(to_open);
-            }
+            printf("%s", str);
         }
-        else
-        {
-            /*
-                No file is specified
-                standerd input method
-            */
-        }
+        // while (1)
+        // {
+        //     char str[MAX_LIMIT];
+        //     fgets(str, MAX_LIMIT, stdin);
+        //     if (Search(argv[1], str) == 1)
+        //     {
+        //         printf("%s", str);
+        //     }
+        // }
     }
     else
     {
-        /*
-            zero command line arguments
-
-         */
-        printf("%s", "wgrep: searchterm [file ...]");
-        exit(1);
+        for (int i = 2; i < argc; i++)
+        {
+            char str[MAX_LIMIT];
+            FILE *to_open = fopen(argv[i], "r");
+            if (to_open == NULL) //file cannot open
+            {
+                printf("%s\n", "wgrep: cannot open file");
+                exit(1);
+            }
+            else
+            {
+                while (fgets(str, 100, to_open) != NULL)
+                {
+                    if (strncmp(argv[1], str, strlen(argv[1])) == 0)
+                    {
+                        printf("%s", str);
+                    }
+                    else
+                    {
+                        if (Search(argv[1], str) == 1)
+                        {
+                            printf("%s", str);
+                        }
+                    }
+                }
+            }
+            fclose(to_open);
+        }
     }
     exit(0);
 }
