@@ -8,7 +8,7 @@ int main(int argc, char *argv[])
 {
     if (argc == 1) // nothing specified
     {
-        printf("%s", "wgrep: searchterm [file ...]");
+        printf("%s\n", "wgrep: searchterm [file ...]");
         exit(1);
     }
     else if (argc == 2) // only string is specified
