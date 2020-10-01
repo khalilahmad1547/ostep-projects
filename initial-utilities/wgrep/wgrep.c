@@ -17,21 +17,15 @@ int main(int argc, char *argv[])
             No file is specified
             standerd input method
         */
-        // char str[MAX_LIMIT];
-        // fgets(str, MAX_LIMIT, stdin);
-        // if (Search(argv[1], str) == 1)
+        // while (1)
         // {
-        //     printf("%s", str);
+        //     char str[MAX_LIMIT];
+        //     fgets(str, MAX_LIMIT, stdin);
+        //     if (Search(argv[1], str) == 1)
+        //     {
+        //         printf("%s", str);
+        //     }
         // }
-        while (1)
-        {
-            char str[MAX_LIMIT];
-            fgets(str, MAX_LIMIT, stdin);
-            if (Search(argv[1], str) == 1)
-            {
-                printf("%s", str);
-            }
-        }
     }
     else
     {
@@ -46,7 +40,7 @@ int main(int argc, char *argv[])
             }
             else
             {
-                while (fgets(str, 100, to_open) != NULL)
+                while (fgets(str, MAX_LIMIT, to_open) != NULL)
                 {
                     if (strncmp(argv[1], str, strlen(argv[1])) == 0)
                     {
