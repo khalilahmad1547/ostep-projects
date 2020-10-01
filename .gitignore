@@ -6,3 +6,4 @@ initial-utilities/wgrep/.vscode/*
 initial-utilities/*/tests-out/
 Update.log
 /initial-utilities/wzip/wzip
+/initial-utilities/wzip/*.zip
