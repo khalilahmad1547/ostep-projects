@@ -17,21 +17,21 @@ int main(int argc, char *argv[])
             No file is specified
             standerd input method
         */
-        char str[MAX_LIMIT];
-        fgets(str, MAX_LIMIT, stdin);
-        if (Search(argv[1], str) == 1)
-        {
-            printf("%s", str);
-        }
-        // while (1)
+        // char str[MAX_LIMIT];
+        // fgets(str, MAX_LIMIT, stdin);
+        // if (Search(argv[1], str) == 1)
         // {
-        //     char str[MAX_LIMIT];
-        //     fgets(str, MAX_LIMIT, stdin);
-        //     if (Search(argv[1], str) == 1)
-        //     {
-        //         printf("%s", str);
-        //     }
+        //     printf("%s", str);
         // }
+        while (1)
+        {
+            char str[MAX_LIMIT];
+            fgets(str, MAX_LIMIT, stdin);
+            if (Search(argv[1], str) == 1)
+            {
+                printf("%s", str);
+            }
+        }
     }
     else
     {
