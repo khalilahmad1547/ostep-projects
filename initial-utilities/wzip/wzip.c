@@ -1,18 +1,14 @@
 #include <stdio.h>
 #include <stdlib.h>
-#define TO_DEBUG 0
-void D_log(char *msg, int to_print);
 int main(int argc, char *argv[])
 {
     if (argc >= 2)
     {
-        D_log("intside if (argc >= 2)", TO_DEBUG);
         /*
             File is specified.
         */
         for (int i = 1; i < argc; i++)
         {
-            D_log("intside for (int i = 1; i < argc; i++)", TO_DEBUG);
             FILE *read_from = fopen(argv[i], "r");
             if (read_from == NULL)
             {
@@ -20,24 +16,30 @@ int main(int argc, char *argv[])
             }
             else
             {
-                char pre_char = getc(read_from);
-                char next_char = getc(read_from);
-                int count = 1;
-                while (next_char != EOF)
+                char pre_char[1];
+                char next_char[1];
+                int count[1];
+                pre_char[0] = getc(read_from);
+                next_char[0] = getc(read_from);
+                count[0] = 1;
+                /*
+                    flage = 1 we did't printied last calculated result
+                    flage = 0 we have printed last calculated result
+                */
+                while (next_char[0] != EOF)
                 {
-                    D_log("intside while (next_char != EOF)", TO_DEBUG);
-                    if (pre_char == next_char)
+                    if (pre_char[0] == next_char[0])
                     {
-                        count++;
+                        count[0]++;
                     }
                     else
                     {
-                        printf("%d%c", count, pre_char);
-                        pre_char = next_char;
-                        next_char = getc(read_from);
-                        count = 1;
+                        printf("%d%c", count[0], pre_char[0]);
+                        pre_char[0] = next_char[0];
+                        count[0] = 1;
                     }
-                    next_char = getc(read_from);
+
+                    next_char[0] = getc(read_from);
                 }
                 fclose(read_from);
                 printf("\n");
@@ -54,12 +56,4 @@ int main(int argc, char *argv[])
     }
 
     exit(0);
-}
-
-void D_log(char *msg, int to_print)
-{
-    if (to_print == 1)
-    {
-        printf("%s\n", msg);
-    }
 }
