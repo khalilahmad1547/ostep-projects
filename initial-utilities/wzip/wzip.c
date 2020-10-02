@@ -34,7 +34,9 @@ int main(int argc, char *argv[])
                     }
                     else
                     {
-                        printf("%d%c", count[0], pre_char[0]);
+                        fwrite(count, 4, 1, stdout);
+                        fwrite(pre_char, 1, 1, stdout);
+                        //printf("%d%c", count[0], pre_char[0]);
                         pre_char[0] = next_char[0];
                         count[0] = 1;
                     }
@@ -42,7 +44,6 @@ int main(int argc, char *argv[])
                     next_char[0] = getc(read_from);
                 }
                 fclose(read_from);
-                printf("\n");
             }
         }
     }
