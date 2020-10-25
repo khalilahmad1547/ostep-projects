@@ -6,6 +6,8 @@
 #include "proc.h"
 #include "sysfunc.h"
 
+int read_sys_call_counter = -1;
+
 int
 sys_fork(void)
 {
@@ -87,4 +89,19 @@ sys_uptime(void)
   xticks = ticks;
   release(&tickslock);
   return xticks;
+}
+// return how many times read has called
+// since boot.
+int sys_getreadcount(void)
+{
+  if (read_sys_call_counter == -1)
+  {
+    return read_sys_call_counter;
+  }
+  else
+  {
+    return read_sys_call_counter + 1;
+  }
+  
+  
 }

@@ -12,7 +12,8 @@
 // Arguments on the stack, from the user call to the C
 // library system call function. The saved user %esp points
 // to a saved program counter, and then the first argument.
-
+extern int read_sys_call_counter;
+extern int sys_getreadcount(void);
 // Fetch the int at addr from process p.
 int
 fetchint(struct proc *p, uint addr, int *ip)
@@ -103,6 +104,7 @@ static int (*syscalls[])(void) = {
 [SYS_wait]    sys_wait,
 [SYS_write]   sys_write,
 [SYS_uptime]  sys_uptime,
+[SYS_getreadcount]  sys_getreadcount,
 };
 
 // Called on a syscall trap. Checks that the syscall number (passed via eax)
